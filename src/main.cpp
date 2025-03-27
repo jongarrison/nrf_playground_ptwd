@@ -1,8 +1,7 @@
 /**
- * Blink
- *
- * Turns on an LED on for one second,
- * then off for one second, repeatedly.
+ * 
+ * Blink an extern LED and read a potentiometer value
+ * 
  */
 #include "Arduino.h"
 
@@ -11,6 +10,7 @@
 #endif
 
 #define LED_EXTERNAL_BLUE 16
+#define POTENTIOMETER_PIN A1
 
 void setup()
 {
@@ -21,12 +21,13 @@ void setup()
   // initialize LED digital pin as an output.
   pinMode(LED_BUILTIN, OUTPUT);
   pinMode(LED_EXTERNAL_BLUE, OUTPUT);
+  pinMode(POTENTIOMETER_PIN, INPUT);
 
 }
 
 void loop()
 {
-  Serial.print("On at");
+  Serial.print("On at: ");
   Serial.println(millis());
 
   // turn the LED on (HIGH is the voltage level)
@@ -36,12 +37,18 @@ void loop()
   // wait for a second
   delay(1000);
 
-  Serial.print("Off at");
+  Serial.print("Off at: ");
   Serial.println(millis());
 
   // turn the LED off by making the voltage LOW
   digitalWrite(LED_BUILTIN, LOW);
   digitalWrite(LED_EXTERNAL_BLUE, LOW);
+
+  //Read the potentiometer value and then map it to a range of 0.0 to 1.0
+  int potValue = analogRead(POTENTIOMETER_PIN);
+  float mappedValue = map(potValue, 0, 1023, 0, 100) / 100.0;
+  Serial.print("Potentiometer value: ");
+  Serial.println(mappedValue);
 
    // wait for a second
   delay(1000);
