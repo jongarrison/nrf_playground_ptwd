@@ -2,6 +2,10 @@
 
 A simple PlatformIO and Arduino based setup to demonstrate some basic concepts with the amazing [Adafruit nrf52 Bluefruit](https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/introduction) (using the nordic nrf52832 chip)
 
+<div style="text-align: center; width: 100%;">
+    <img style="max-width: 300px;" src="notes/board_pic.png" />
+</div>
+
 # Get Up And Running!
 
 * Install [VSCode](https://code.visualstudio.com/download)
